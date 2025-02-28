@@ -1,0 +1,30 @@
+# Frontend: Node modules and build outputs
+frontend/node_modules/
+frontend/dist/
+
+# Backend: Composer vendor directory and environment files
+backend/vendor/
+backend/composer.phar
+backend/.env
+
+# Editor directories and files
+.idea
+.DS_Store
+backend/.idea
+frontend/.idea
+backend/.DS_Store
+frontend/.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*

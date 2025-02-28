@@ -1,0 +1,140 @@
+h3 {
+    font-family: Raleway, sans-serif;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    z-index: 1;
+}
+
+.cart-item__product-name {
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+
+.cart-item__product-price {
+    font-weight: 500;
+}
+
+.cart-item__product-count {
+    font-weight: 500;
+}
+
+.cart-item__count-btn{
+    height: 24px;
+    width: 24px;
+    background: transparent;
+    border: 1px solid black;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 1px 6px;
+}
+
+.cart-overlay__content {
+    width: 325px;
+    background: #fff;
+    position: absolute;
+    right: 50px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cart-item:last-of-type {
+    border-bottom: none;
+}
+
+.cart-item {
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.cart-item__img {
+    max-width: 100%;
+}
+
+.cart-item__img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 159px;
+}
+
+.cart-item__attribute {
+    margin: 5px 0;
+}
+
+.cart-item__attribute-options {
+    display: flex;
+    flex-flow: wrap;
+    gap: 2px;
+}
+
+.cart-item__options {
+    width: 136px;
+}
+
+.cart-item__controls {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-overlay__total {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 15px;
+    font-family: Raleway, sans-serif;
+    font-weight: 700;
+}
+
+.cart-overlay__order-btn {
+    width: 100%;
+    padding: 10px;
+    background: #5ECE7B;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-item__option--text {
+    font-family: SourceSans3, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid black;
+}
+
+.cart-overlay__order-btn:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+.cart-item__option--text-selected {
+    background: black;
+    color: #fff;
+}
+
+.cart-item__option--swatch {
+    padding: 8px;
+    border: 1px solid lightblue;
+    box-sizing: border-box;
+    margin: 0;
+    box-shadow: inset 0 0 0 1px #fff;
+    cursor: pointer;
+}
+
+.cart-item__option--swatch-selected {
+    border-color: #000;
+}

@@ -1,0 +1,80 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  categories: [Category]
+  products(category: String): [Product]
+  product(id: String!): Product
+}
+
+type Mutation {
+  createOrder(items: [OrderItemInput!]!): Order
+}
+
+type Category {
+    id: String!
+  name: String!
+}
+
+type Product {
+  id: String!
+  name: String!
+  inStock: Boolean!
+  gallery: [String!]!
+  description: String
+  category: String
+  attributes: [AttributeSet!]!
+  prices: [Price!]!
+  brand: String
+}
+
+type AttributeSet {
+  id: String!
+  name: String!
+  type: String!
+  items: [AttributeItem!]!
+}
+
+type AttributeItem {
+  displayValue: String!
+  value: String!
+}
+
+type Price {
+  amount: Float!
+  currency: Currency!
+}
+
+type Currency {
+  label: String!
+  symbol: String!
+}
+
+input OrderItemInput {
+  productId: String!
+  quantity: Int!
+  chosenAttributes: [ChosenAttributeInput!]
+}
+
+input ChosenAttributeInput {
+  name: String!
+  value: String!
+}
+
+type Order {
+  id: Int!
+  items: [OrderItem!]!
+}
+
+type OrderItem {
+  productId: String!
+  quantity: Int!
+  chosenAttributes: [ChosenAttribute!]
+}
+
+type ChosenAttribute {
+  name: String!
+  value: String!
+}
