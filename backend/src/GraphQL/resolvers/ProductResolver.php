@@ -7,7 +7,7 @@ use App\Models\Product;
 use PDO;
 
 class ProductResolver {
-    public function getProducts($args) {
+    public function getProducts($root,$args) {
         $pdo = Connection::getConnection();
 
         // Filter by category if specified
@@ -39,7 +39,7 @@ class ProductResolver {
         return array_map(fn($product) => $product->toArray(), $products);
     }
 
-    public function getProduct($args): ?array
+    public function getProduct($root, $args): ?array
     {
         $pdo = Connection::getConnection();
         $stmt = $pdo->prepare(

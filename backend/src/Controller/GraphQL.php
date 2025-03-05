@@ -32,13 +32,13 @@ class GraphQL {
                     $resolver = new CategoryResolver();
                     return $resolver->getCategories();
                 },
-                'products' => function($args) {
+                'products' => function($root, $args) {
                     $resolver = new ProductResolver();
-                    return $resolver->getProducts($args);
+                    return $resolver->getProducts($root, $args);
                 },
                 'product' => function($root, $args) {
                     $resolver = new ProductResolver();
-                    return $resolver->getProduct($args);
+                    return $resolver->getProduct($root, $args);
                 },
                 'createOrder' => function($root, $args) {
                     $resolver = new OrderResolver();
