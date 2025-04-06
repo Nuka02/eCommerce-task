@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-class TextAttributeSet extends AttributeSet
+class ClothesProduct extends Product
 {
     public function __construct(array $data)
     {
-        $this->type = 'text';
         $this->initialize($data);
     }
 }

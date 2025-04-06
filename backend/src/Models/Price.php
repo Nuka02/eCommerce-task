@@ -1,24 +1,28 @@
 <?php
+
 namespace App\Models;
 
-class Price {
+class Price
+{
     protected float $amount;
     protected string $currencyLabel;
     protected string $currencySymbol;
 
-    public function __construct(array $data) {
-        $this->amount = (float)$data['amount'];
+    public function __construct(array $data)
+    {
+        $this->amount = (float) $data['amount'];
         $this->currencyLabel = $data['currency_label'];
         $this->currencySymbol = $data['currency_symbol'];
     }
 
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
-            'amount'   => $this->amount,
+            'amount' => $this->amount,
             'currency' => [
-                'label'  => $this->currencyLabel,
+                'label' => $this->currencyLabel,
                 'symbol' => $this->currencySymbol,
-            ]
+            ],
         ];
     }
 }

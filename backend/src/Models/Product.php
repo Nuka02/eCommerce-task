@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Models;
 
-class Product {
+abstract class Product
+{
     protected string $id;
     protected string $name;
     protected bool $inStock;
@@ -14,12 +16,8 @@ class Product {
     /** @var Price[] */
     protected array $prices;
 
-    public function __construct(array $data) {
-        $this->initialize($data);
-    }
-
-
-    protected function initialize(array $data): void {
+    protected function initialize(array $data): void
+    {
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->inStock = (bool)$data['in_stock'];
@@ -31,24 +29,27 @@ class Product {
         $this->prices = array_map(fn($priceData) => new Price($priceData), $data['prices']);
     }
 
-    /**
-     * Convert to an array for GraphQL consumption.
-     */
-    public function toArray(): array {
+    public function toArray(): array
+    {
         return [
-            'id'           => $this->id,
-            'name'         => $this->name,
-            'inStock'      => $this->inStock,
-            'description'  => $this->description,
-            'brand'        => $this->brand,
-            'category'     => $this->category,
-            'gallery'      => $this->gallery,
-            'attributes'   => array_map(fn($attrSet) => $attrSet->toArray(), $this->attributeSets),
-            'prices'       => array_map(fn($price) => $price->toArray(), $this->prices),
+            'id' => $this->id,
+            'name' => $this->name,
+            'inStock' => $this->inStock,
+            'description' => $this->description,
+            'brand' => $this->brand,
+            'category' => $this->category,
+            'gallery' => $this->gallery,
+            'attributes' => array_map(fn($attrSet) => $attrSet->toArray(), $this->attributeSets),
+            'prices' => array_map(fn($price) => $price->toArray(), $this->prices),
         ];
     }
 
-    public static function createFromData(array $data): self {
-        return new Product($data);
+    public static function createFromData(array $data): self
+    {
+        return match ($data['category_name'] ?? 'default') {
+            'clothes' => new ClothesProduct($data),
+            'tech' => new TechProduct($data),
+            default => new DefaultProduct($data),
+        };
     }
 }

@@ -14,7 +14,7 @@ type Mutation {
 }
 
 type Category {
-    id: String!
+  id: String!
   name: String!
 }
 
